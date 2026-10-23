@@ -13,7 +13,7 @@ def construir_caso(proveedor:str="memoria")->CrearFacturaCasoUso:
     return CrearFacturaCasoUso(repositorio=repositorio, control_fraude=control_fraude, politica_fiscal=politica_fiscal)
 
 def main():
-    motor_configurado=os.getenv("REPOSITORIO","postgresql")
+    motor_configurado=os.getenv("REPOSITORIO","oracle")
     print("=" * 70)
     print(f" SISTEMA DE FACTURACIÓN: {motor_configurado.upper()}")
     print("=" * 70)

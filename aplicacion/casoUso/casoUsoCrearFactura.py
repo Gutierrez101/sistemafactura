@@ -31,9 +31,7 @@ class CrearFacturaCasoUso(CrearFactura):
             campos_requeridos = ("descripcion", "cantidad", "precio_unitario")
             campos_faltantes = [campo for campo in campos_requeridos if campo not in item]
             if campos_faltantes:
-                raise ValueError(
-                    f"Faltan campos en la línea {indice}: {', '.join(campos_faltantes)}."
-                )
+                raise ValueError(f"Faltan campos en la línea {indice}: {', '.join(campos_faltantes)}.")
 
             descripcion = item["descripcion"]
             if not isinstance(descripcion, str):
@@ -45,21 +43,15 @@ class CrearFacturaCasoUso(CrearFactura):
             try:
                 cantidad = int(cantidad_dato)
             except ValueError as error:
-                raise ValueError(
-                    f"La cantidad de la línea {indice} debe ser un entero."
-                ) from error
+                raise ValueError(f"La cantidad de la línea {indice} debe ser un entero.") from error
 
             precio_dato = item["precio_unitario"]
-            if isinstance(precio_dato, bool) or not isinstance(
-                precio_dato, (str, int, float, Decimal)
-            ):
+            if isinstance(precio_dato, bool) or not isinstance(precio_dato, (str, int, float, Decimal)):
                 raise ValueError(f"El precio de la línea {indice} debe ser numérico.")
             try:
                 precio_unitario = Decimal(str(precio_dato))
             except InvalidOperation as error:
-                raise ValueError(
-                    f"El precio de la línea {indice} debe ser numérico."
-                ) from error
+                raise ValueError(f"El precio de la línea {indice} debe ser numérico.") from error
 
             lineas.append(
                 DetalleFactura(descripcion=descripcion, cantidad=cantidad, precio_unitario=precio_unitario)

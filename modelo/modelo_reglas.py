@@ -1,6 +1,5 @@
 from decimal import Decimal
 
-
 class ControlFraude:
     def __init__(self, limite:Decimal=Decimal("10000.00")):
         self._limite=limite

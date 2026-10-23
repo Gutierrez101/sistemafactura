@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from decimal import Decimal, DecimalException
 import uuid
 
-
 @dataclass
 class DetalleFactura:
     descripcion:str
